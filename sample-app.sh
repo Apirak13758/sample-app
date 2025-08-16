@@ -17,12 +17,12 @@ RUN pip install --no-cache-dir --progress-bar=off --root-user-action=ignore flas
 COPY ./static ./static/
 COPY ./templates ./templates/
 COPY sample_app.py .
-EXPOSE 8080
+EXPOSE 5050
 CMD ["python3", "sample_app.py"]
 EOF
 
 # Build and run
 cd tempdir || exit
 docker build -t sampleapp .
-docker run -t -d -p 8080:8080 --memory=1g --name samplerunning sampleapp
+docker run -t -d -p 5050:5050 --memory=1g --name samplerunning sampleapp
 docker ps -a
